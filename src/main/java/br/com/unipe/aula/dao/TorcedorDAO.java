@@ -1,43 +1,50 @@
 package br.com.unipe.aula.dao;
 
-import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unipe.aula.model.Torcedor;
 
 @Repository
 public class TorcedorDAO {
 	
-	private static List<Torcedor> torcedores;
+	@PersistenceContext
+	private EntityManager entityManager;
 	
 	public TorcedorDAO() {
-		torcedores = new LinkedList<Torcedor>();
+		
 	}
 	
+	@Transactional(readOnly=false)
 	public void salvar(Torcedor torcedor) {
-		torcedores.add(torcedor);
+		//torcedores.add(torcedor);
+		entityManager.persist(torcedor);
 	}
 	
+	@Transactional(readOnly=true)
 	public List<Torcedor> getAll() { 
-		return torcedores; 
+		return entityManager.createQuery("from Torcedor",Torcedor.class).getResultList();
 	}
 	
-	public void excluir(int id) {
-		torcedores.remove(id);
+	@Transactional(readOnly=true)
+	public Torcedor getId(Long id) {
+		return entityManager.find(Torcedor.class, id);
 	}
-
-	public Torcedor get(int index) {
-	    if (index >= 0 && index < torcedores.size()) {
-	        return torcedores.get(index);
-	    } else {
-	        return null;
-	    }
+	
+	@Transactional(readOnly=false)
+	public void excluir(Long id) {
+		//torcedores.remove(id);
+		entityManager.remove(getId(id));
 	}
-
-	public void atualizar(int index, Torcedor torcedor) {
-	    torcedores.set(index, torcedor);
+	
+	@Transactional(readOnly=false)
+	public void editar(Torcedor torcedor) {
+		entityManager.merge(torcedor);
 	}
 
 }

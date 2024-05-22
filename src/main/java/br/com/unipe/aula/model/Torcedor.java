@@ -1,16 +1,34 @@
 package br.com.unipe.aula.model;
 
-public class Torcedor {
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="torcedores")
+public class Torcedor implements Serializable {
 	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(nullable=false, length=100)
 	private String nome;
+	@Column(nullable=false, length=100)
 	private String time;
 	
 	public Torcedor() {}
-	
-	public Torcedor(String nome, String time) {
+	public Torcedor(Long id, String nome, String time) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.time = time;
+	}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public String getNome() {
