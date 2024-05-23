@@ -24,7 +24,7 @@ public class SpringJpaConfig {
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
 		ds.setUrl("jdbc:mysql://localhost:3306/teste?createDatabaseIfNotExist=true");
 		ds.setUsername("root");
-		ds.setPassword("");
+		ds.setPassword("Abelo100");
 		
 		return ds;
 	}

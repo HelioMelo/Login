@@ -92,31 +92,27 @@
 <div class="hero-section">
     <div class="hero-overlay"></div>
     <div class="hero-content animate__animated animate__fadeIn">
-    <h1>Brasil</h1>
-    <p>Cadastro de Times brasileiro</p>
-    <p>Login</p>
-    <div class="login-form">
-        <!-- Adicione o código abaixo para exibir a mensagem de erro -->
-        <c:if test="${not empty error}">
-            <div class="alert alert-danger" role="alert">${error}</div>
-        </c:if>
-        
-        <form action="login" method="post">
-            <div class="form-group">
-                <input type="text" name="username" class="form-control" placeholder="Nome de Usuário" required>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Senha" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
-            <a href="/intro-spring/login" class="btn btn-primary btn-block">Cadastrar</a>
-        </form>
+        <h1>Brasil</h1>
+        <p>Cadastro de Times brasileiro</p>
+        <p>Login</p>
+        <div class="login-form">
+            <!-- Exibir mensagem de erro -->
+            <c:if test="${not empty error}">
+                <div class="alert alert-danger" role="alert">${error}</div>
+            </c:if>
+            <form action="login" method="post">
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control" placeholder="Nome de Usuário" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Senha" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <a href="/intro-spring/login" class="btn btn-primary btn-block">Cadastrar</a>
+            </form>
+        </div>
     </div>
 </div>
-    </div>
-    
-
-
 
 </body>
 </html>

@@ -1,5 +1,4 @@
-
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,10 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Minha primeira View</title>
-<spring:url var="cssBootstrap" value="/static/bootstrap.min.css" />
-<spring:url var="cssAnimate" value="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link type="text/css" rel="stylesheet" href="${cssBootstrap}" />
-<link type="text/css" rel="stylesheet" href="${cssAnimate}" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <style>
     body {

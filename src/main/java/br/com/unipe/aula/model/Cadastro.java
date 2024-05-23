@@ -1,5 +1,7 @@
 package br.com.unipe.aula.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name= "login")
-public class Cadastro {
+public class Cadastro implements Serializable  {
 
 	
 	@Id

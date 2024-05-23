@@ -12,39 +12,39 @@ import br.com.unipe.aula.model.Torcedor;
 
 @Repository
 public class TorcedorDAO {
-	
-	@PersistenceContext
-	private EntityManager entityManager;
-	
-	public TorcedorDAO() {
-		
-	}
-	
-	@Transactional(readOnly=false)
-	public void salvar(Torcedor torcedor) {
-		//torcedores.add(torcedor);
-		entityManager.persist(torcedor);
-	}
-	
-	@Transactional(readOnly=true)
-	public List<Torcedor> getAll() { 
-		return entityManager.createQuery("from Torcedor",Torcedor.class).getResultList();
-	}
-	
-	@Transactional(readOnly=true)
-	public Torcedor getId(Long id) {
-		return entityManager.find(Torcedor.class, id);
-	}
-	
-	@Transactional(readOnly=false)
-	public void excluir(Long id) {
-		//torcedores.remove(id);
-		entityManager.remove(getId(id));
-	}
-	
-	@Transactional(readOnly=false)
-	public void editar(Torcedor torcedor) {
-		entityManager.merge(torcedor);
-	}
+    
+    @PersistenceContext
+    private EntityManager entityManager;
+    
+    public TorcedorDAO() {}
+
+    @Transactional(readOnly = false)
+    public void salvar(Torcedor torcedor) {
+        entityManager.persist(torcedor);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Torcedor> getAll() {
+    	return entityManager.createQuery("FROM Torcedor", Torcedor.class).getResultList();
+    }
+
+    @Transactional(readOnly = false)
+    public void excluir(Long id) {
+    	entityManager.remove(get(id));
+    }
+
+    @Transactional(readOnly = true)
+    public Torcedor get(Long id) {
+        return entityManager.find(Torcedor.class, id); 
+    }
+
+
+    @Transactional
+    public void atualizar(Long id, Torcedor torcedor) {
+        torcedor.setId(id);
+        entityManager.merge(torcedor);
+    
+
+    }
 
 }
